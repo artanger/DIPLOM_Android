@@ -43,17 +43,21 @@
         android:layout_gravity="bottom|right"
         >
 
-        <android.support.design.widget.FloatingActionButton
+        <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#ccc"
             fab:fabSize="normal" />
         <!-- Other button as menu items-->
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab_random"
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnrun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            fab:fabSize="normal" />
+            android:background="#ccc"
+            fab:fabSize="normal"
+
+            />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

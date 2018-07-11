@@ -11,9 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.arthur.easysendler.App;
 import com.example.arthur.easysendler.R;
 import com.example.arthur.easysendler.RecipientAdapter;
 import com.example.arthur.easysendler.api.MailApi;
+import com.example.arthur.easysendler.services.MailService;
 import com.example.arthur.easysendler.utils.Provider;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -45,21 +47,23 @@ public class RecipientListFragment extends Fragment {
         return v;
     }
 
+    MailService mailService;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        mailService = App.get(getContext()).getMailService();
         recipientAdapter = new RecipientAdapter(getContext());
         api = Provider.Api.getMailApi();
         api.getRecipientList(10, 1)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(
-                        resp -> recipientAdapter.setData(resp),
-                        e -> Log.v("----","->",e)
+                        resp -> {
+                            recipientAdapter.setData(resp);
+                        },
+                        e -> Log.v("----", "->", e)
                 );
-
 
 
     }
