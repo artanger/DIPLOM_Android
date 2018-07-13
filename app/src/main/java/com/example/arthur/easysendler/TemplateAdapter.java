@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.arthur.easysendler.entities.Template;
 
@@ -41,6 +42,9 @@ public class TemplateAdapter extends RecyclerView.Adapter<TemplateAdapter.Templa
 
         holder.t_name.setText(mData.get(position).getText());
         holder.t_desc.setText(mData.get(position).getDescription());
+        holder.itemView.setOnClickListener((View view)->{
+            Toast.makeText(mContext, mData.get(position).getId(), Toast.LENGTH_LONG).show();
+        });
 
     }
 

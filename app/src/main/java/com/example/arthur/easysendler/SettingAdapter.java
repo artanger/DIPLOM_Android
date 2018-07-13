@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.arthur.easysendler.entities.Recipient;
 import com.example.arthur.easysendler.entities.Setting;
@@ -40,6 +41,10 @@ public class SettingAdapter extends RecyclerView.Adapter<SettingAdapter.SettingV
 
         holder.s_name.setText(mData.get(position).getText());
         holder.s_desc.setText(mData.get(position).getDescription());
+
+        holder.itemView.setOnClickListener((View view)->{
+            Toast.makeText(mContext, mData.get(position).getId(), Toast.LENGTH_LONG).show();
+        });
 
     }
 

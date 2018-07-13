@@ -5,38 +5,52 @@
     android:orientation="vertical"
     android:layout_marginTop="20dp"
 
-
     >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email"
-        android:layout_marginLeft="25dp"
-        android:textColor="@color/white"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:id="@+id/s_name"
-        android:textColor="@color/white"
-        android:paddingBottom="20dp"
-        android:layout_marginLeft="25dp"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Description"
-        android:layout_marginLeft="25dp"
-        android:textColor="@color/white"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/s_desc"
-        android:textColor="@color/white"
-        android:paddingBottom="20dp"
-        android:layout_marginLeft="25dp"
+    <LinearLayout
+        android:id="@+id/rllayout"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/layout_border"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:layout_marginLeft="25dp"
+            android:textColor="@color/white"/>
 
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:id="@+id/s_name"
+
+            android:paddingBottom="20dp"
+            android:layout_marginLeft="25dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:layout_marginLeft="25dp"
+            android:textColor="@color/white"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/s_desc"
+
+            android:paddingBottom="20dp"
+            android:layout_marginLeft="25dp"
+
+            />
+
+
+
+    </LinearLayout>
+
 
 </LinearLayout>
