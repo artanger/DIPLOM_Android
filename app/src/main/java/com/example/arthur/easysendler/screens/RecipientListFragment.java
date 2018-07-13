@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.arthur.easysendler.App;
 import com.example.arthur.easysendler.R;
@@ -43,6 +44,11 @@ public class RecipientListFragment extends Fragment {
 
 
         myrecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recipientAdapter.getItemClickSubject().subscribe(id->{
+            App.get(getContext()).getMailService().setRecipientId(id);
+            recipientAdapter.notifyDataSetChanged();
+        });
+
         myrecyclerview.setAdapter(recipientAdapter);
         return v;
     }

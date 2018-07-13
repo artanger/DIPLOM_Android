@@ -16,6 +16,8 @@ import com.example.arthur.easysendler.entities.Recipient;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.subjects.PublishSubject;
+
 /**
  * Created by Arthur on 04.07.2018.
  */
@@ -25,6 +27,11 @@ public class RecipientAdapter extends RecyclerView.Adapter<RecipientAdapter.MyVi
     Context mContext;
     List<Recipient> mData;
     LinearLayout mBackground;
+    PublishSubject<String> itemClickSubject = PublishSubject.create();
+
+    public PublishSubject<String> getItemClickSubject() {
+        return itemClickSubject;
+    }
 
     public void setData(List<Recipient> mData) {
         this.mData = mData;
@@ -56,6 +63,12 @@ public class RecipientAdapter extends RecyclerView.Adapter<RecipientAdapter.MyVi
         holder.rl_name.setText(mData.get(position).getText());
         holder.rl_desc.setText(mData.get(position).getDescription());
 
+
+        if(mData.get(position).getId().equals(App.get(mContext).getMailService().getRecipientId())){
+            holder.rllayout.setBackgroundColor(0xff00ff00);
+        }else{
+            holder.rllayout.setBackgroundResource(R.drawable.layout_border);
+        }
 //        holder.rl_name.setOnClickListener((View view) ->{
 //            Toast.makeText(mContext, "rl_name" , Toast.LENGTH_LONG).show();
 //        });
@@ -66,7 +79,8 @@ public class RecipientAdapter extends RecyclerView.Adapter<RecipientAdapter.MyVi
 
 
         holder.itemView.setOnClickListener((View view)->{
-            Toast.makeText(mContext, mData.get(position).getId(), Toast.LENGTH_LONG).show();
+            itemClickSubject.onNext(mData.get(position).getId());
+
         });
 
     }
@@ -80,12 +94,14 @@ public class RecipientAdapter extends RecyclerView.Adapter<RecipientAdapter.MyVi
 
         private TextView rl_name;
         private TextView rl_desc;
+        private View rllayout;
 
         public MyViewHolder(View itemView){
             super(itemView);
 
             rl_name = itemView.findViewById(R.id.rl_name);
             rl_desc = itemView.findViewById(R.id.rl_desc);
+            rllayout = itemView.findViewById(R.id.rllayout);
 
 
         }
