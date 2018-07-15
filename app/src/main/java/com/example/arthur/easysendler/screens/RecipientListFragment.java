@@ -22,8 +22,11 @@ import com.example.arthur.easysendler.utils.Provider;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
+import static com.example.arthur.easysendler.App.get;
+
 
 public class RecipientListFragment extends Fragment {
+
 
     View v;
     MailApi api;
@@ -44,6 +47,7 @@ public class RecipientListFragment extends Fragment {
 
 
         myrecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+
         recipientAdapter.getItemClickSubject().subscribe(id->{
             App.get(getContext()).getMailService().setRecipientId(id);
             recipientAdapter.notifyDataSetChanged();

@@ -69,6 +69,7 @@ public class RecipientAdapter extends RecyclerView.Adapter<RecipientAdapter.MyVi
         }else{
             holder.rllayout.setBackgroundResource(R.drawable.layout_border);
         }
+
 //        holder.rl_name.setOnClickListener((View view) ->{
 //            Toast.makeText(mContext, "rl_name" , Toast.LENGTH_LONG).show();
 //        });
