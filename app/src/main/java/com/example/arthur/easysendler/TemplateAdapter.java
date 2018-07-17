@@ -53,8 +53,8 @@ public class TemplateAdapter extends RecyclerView.Adapter<TemplateAdapter.Templa
 
         holder.t_name.setText(mData.get(position).getText());
         holder.t_desc.setText(mData.get(position).getDescription());
-        if(mData.get(position).getId().equals(App.get(mContext).getMailService().getRecipientId())){
-            holder.template_layout.setBackgroundColor(0xff00ff00);
+        if(mData.get(position).getId().equals(App.get(mContext).getMailService().getTemplateId())){
+            holder.template_layout.setBackgroundResource(R.drawable.select_item_border);
         }else{
             holder.template_layout.setBackgroundResource(R.drawable.layout_border);
         }

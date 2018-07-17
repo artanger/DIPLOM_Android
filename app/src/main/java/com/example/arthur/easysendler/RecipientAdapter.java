@@ -65,18 +65,11 @@ public class RecipientAdapter extends RecyclerView.Adapter<RecipientAdapter.MyVi
 
 
         if(mData.get(position).getId().equals(App.get(mContext).getMailService().getRecipientId())){
-            holder.rllayout.setBackgroundColor(0xff00ff00);
+            holder.rllayout.setBackgroundResource(R.drawable.select_item_border);
         }else{
             holder.rllayout.setBackgroundResource(R.drawable.layout_border);
         }
 
-//        holder.rl_name.setOnClickListener((View view) ->{
-//            Toast.makeText(mContext, "rl_name" , Toast.LENGTH_LONG).show();
-//        });
-//
-//        holder.rl_desc.setOnClickListener((View view) ->{
-//            Toast.makeText(mContext, "rl_desc", Toast.LENGTH_LONG).show();
-//        });
 
 
         holder.itemView.setOnClickListener((View view)->{

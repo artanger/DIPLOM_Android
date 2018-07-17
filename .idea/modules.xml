@@ -3,8 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DIPLOM_Android.iml" filepath="$PROJECT_DIR$/DIPLOM_Android.iml" />
+      <module fileurl="file://C:\Users\student.ITSTEP1\Desktop\DIPLOM_Android-master\DIPLOM_Android-master\DIPLOM_Android.iml" filepath="C:\Users\student.ITSTEP1\Desktop\DIPLOM_Android-master\DIPLOM_Android-master\DIPLOM_Android.iml" />
       <module fileurl="file://C:\Users\student.ITSTEP1\Desktop\DIPLOM_Android\MobileEasySendler.iml" filepath="C:\Users\student.ITSTEP1\Desktop\DIPLOM_Android\MobileEasySendler.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\student.ITSTEP1\Desktop\DIPLOM_Android-master\DIPLOM_Android-master\app\app.iml" filepath="C:\Users\student.ITSTEP1\Desktop\DIPLOM_Android-master\DIPLOM_Android-master\app\app.iml" />
     </modules>
   </component>
 </project>

@@ -51,8 +51,8 @@ public class SettingAdapter extends RecyclerView.Adapter<SettingAdapter.SettingV
         holder.s_name.setText(mData.get(position).getText());
         holder.s_desc.setText(mData.get(position).getDescription());
 
-        if(mData.get(position).getId().equals(App.get(mContext).getMailService().getRecipientId())){
-            holder.settinglayout.setBackgroundColor(0xff00ff00);
+        if(mData.get(position).getId().equals(App.get(mContext).getMailService().getSettingId())){
+            holder.settinglayout.setBackgroundResource(R.drawable.select_item_border);
         }else{
             holder.settinglayout.setBackgroundResource(R.drawable.layout_border);
         }

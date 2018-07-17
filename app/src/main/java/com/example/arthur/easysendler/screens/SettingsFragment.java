@@ -47,7 +47,7 @@ public class SettingsFragment extends Fragment {
         myrecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         settingAdapter.getItemClickSubject().subscribe(id->{
-            App.get(getContext()).getMailService().setRecipientId(id);
+            App.get(getContext()).getMailService().setSettingId(id);
             settingAdapter.notifyDataSetChanged();
         });
 

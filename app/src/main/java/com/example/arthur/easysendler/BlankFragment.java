@@ -9,6 +9,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,10 @@ import com.example.arthur.easysendler.screens.SettingsFragment;
 import com.example.arthur.easysendler.screens.TemplatesFragment;
 import com.example.arthur.easysendler.screens.WelcomeFragment;
 import com.example.arthur.easysendler.services.MailService;
+import com.example.arthur.easysendler.utils.Provider;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 
 public class BlankFragment extends Fragment {
@@ -50,13 +55,63 @@ public class BlankFragment extends Fragment {
 
 
         actionA = v.findViewById(R.id.btnrun);
-        actionA.setOnClickListener(b -> {
-            if(mailService.getRecipientId() == null || mailService.getSettingId() == null || mailService.getTemplateId() == null ){
-                Toast.makeText(getContext(), "Settings unchanged", Toast.LENGTH_LONG).show();
+        actionA.setOnClickListener((View b) -> {
+//            if(mailService.getRecipientId() == null || mailService.getSettingId() == null || mailService.getTemplateId() == null ){
+//                Toast.makeText(getContext(), "Settings unchanged", Toast.LENGTH_LONG).show();
+//                return;
+//            }
+
+
+            String validationMessage = "";
+            if (mailService.getRecipientId() == null ){
+                validationMessage = "Recipients List";
+            }
+
+            if (mailService.getSettingId() == null){
+                validationMessage = validationMessage.length() > 0
+                        ? validationMessage + ", Settings"
+                        : validationMessage + "Settings";
+            }
+
+            if (mailService.getTemplateId() == null){
+                validationMessage = validationMessage.length() > 0
+                        ? validationMessage + ", Template"
+                        : validationMessage + "Template";
+            }
+
+            if(validationMessage.length() > 0){
+                validationMessage = "Please, select " + validationMessage;
+                Toast.makeText(getContext(), validationMessage, Toast.LENGTH_LONG).show();
                 return;
             }
 
-            Toast.makeText(getContext(), "Settings changed", Toast.LENGTH_LONG).show();
+            //            if( mailService.getSettingId() == null || mailService.getTemplateId() == null){
+//                Toast.makeText(getContext(),  "Please select setting" + "Please select template", Toast.LENGTH_LONG).show();
+//                return;
+//            }
+
+
+
+//            if (mailService.getSettingId() == null){
+//                Toast.makeText(getContext(), "Please select setting", Toast.LENGTH_LONG).show();
+//                return;
+//            }
+//            if (mailService.getTemplateId() == null){
+//                Toast.makeText(getContext(), "Please select template", Toast.LENGTH_LONG).show();
+//                return;
+//            }
+
+            Provider.Api.getMailApi().run(mailService.getRecipientId(),mailService.getTemplateId(),mailService.getSettingId())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeOn(Schedulers.io())
+                    .subscribe(
+                            resp -> {
+                                Toast.makeText(getContext(), "Complite!!!!", Toast.LENGTH_LONG).show();
+                            },
+                            e -> Log.v("----", "->", e)
+                    );
+
+            Toast.makeText(getContext(), "Start running...", Toast.LENGTH_LONG).show();
 
         });
 
@@ -83,9 +138,9 @@ public class BlankFragment extends Fragment {
 
         //add fragment
 
-        adapter.Addfragment(new RecipientListFragment(), "RecipientList Fragment");
-        adapter.Addfragment(new SettingsFragment(), "Settings Fragment");
-        adapter.Addfragment(new TemplatesFragment(), "Templates Fragment");
+        adapter.Addfragment(new RecipientListFragment(), "Recipient List");
+        adapter.Addfragment(new SettingsFragment(), "Settings List");
+        adapter.Addfragment(new TemplatesFragment(), "Templates List");
 
         viewPager.setAdapter(adapter);
         tablayout.setupWithViewPager(viewPager);

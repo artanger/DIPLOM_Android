@@ -45,7 +45,7 @@ public class TemplatesFragment extends Fragment {
 
 
         templateAdapter.getItemClickSubject().subscribe(id->{
-            App.get(getContext()).getMailService().setRecipientId(id);
+            App.get(getContext()).getMailService().setTemplateId(id);
             templateAdapter.notifyDataSetChanged();
         });
 
